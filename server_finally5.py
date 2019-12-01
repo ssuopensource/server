@@ -71,7 +71,8 @@ try:
 			breakAll = 0
 			
 			while (breakAll == 0):
-        			if (state == False):
+				state = GPIO.input(GPIOIN)
+        			while (state == False):
 					print("motion not detected")
 					startTime = time.time()
 					
@@ -82,7 +83,9 @@ try:
                 					record()
                 					breakAll = 1
 						time.sleep(0.5)
-				else:
+						state = GPIO.input(GPIOIN)
+					
+				if (state == True):
 					print("motion detected")
 					time.sleep(0.5)
 							
