@@ -82,6 +82,9 @@ try:
                 					record()
                 					breakAll = 1
 						time.sleep(0.5)
+				else:
+					print("motion detected")
+					time.sleep(0.5)
 							
 				if (breakAll == 1):
 					break
