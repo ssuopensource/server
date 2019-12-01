@@ -10,7 +10,6 @@ import os
 import sys
 import time
 import datetime
-import smtplib
 
 
 def record():
@@ -20,7 +19,7 @@ def record():
         now = datetime.datetime.now()
         filename = now.strftime('%Y-%m-%d %H:%M:%S')
         camera.start_recording(output = filename + '.h264')
-        camera.wait_recording(5)
+        camera.wait_recording(30)
         camera.stop_recording()
 	camera.close()
 	email_user = 'son33620812@gmail.com'
@@ -79,7 +78,7 @@ try:
         				while (breakAll == 0):
 						print("motion not detected")
             					nowTime = time.time()
-            					if (nowTime - startTime >= 10):
+            					if (nowTime - startTime >= 108000):
                 					record()
                 					breakAll = 1
 						time.sleep(0.5)
