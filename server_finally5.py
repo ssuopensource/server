@@ -84,6 +84,7 @@ try:
                 					breakAll = 1
 						time.sleep(0.5)
 						state = GPIO.input(GPIOIN)
+					time.sleep(0.5)
 					
 				if (state == True):
 					print("motion detected")
