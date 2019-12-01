@@ -67,17 +67,29 @@ try:
             	state = GPIO.input(GPIOIN)
     		
 	    	if (state == True):
+			print("motion detected")
 			breakAll = 0
+			
 			while (breakAll == 0):
         			if (state == False):
+					print("motion not detected")
 					startTime = time.time()
+					
         				while (breakAll == 0):
+						print("motion not detected")
             					nowTime = time.time()
             					if (nowTime - startTime >= 10):
                 					record()
                 					breakAll = 1
+						time.sleep(0.5)
+							
 				if (breakAll == 1):
 					break
+		else:
+			print("motion not detected")
+					
+		GPIO.output(GPIOOUT, state)
+		time.sleep(0.5)
 
 except KeyboardInterrupt:
         GPIO.cleanup()
